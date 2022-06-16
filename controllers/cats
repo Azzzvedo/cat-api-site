@@ -1,7 +1,10 @@
-
 const Cat = require('../models/cat')
 
-exports.getIndex = (req, res, next) => {
-  Cat.fetchRandomCat()
-  res.render('index')
+exports.getIndex = async function (req, res, next) {
+  const [cat] = await Cat.fetchRandomCat()
+  console.log(cat);
+  res.render('index', {
+    imgUrl: cat.url,
+    path: undefined
+  })
 }
