@@ -8,8 +8,22 @@ exports.getIndex = async function (req, res, next) {
     path: undefined
   })
 }
+
 exports.getBreeds = async function (req, res, next) {
   const breeds = await Cat.fetchCatBreeds()
-  breeds.length;
-  res.redirect('/')
+  res.render('breeds', {
+    breeds: breeds,
+    path: undefined
+  })
+}
+
+exports.getBreed = async function (req, res, next) {
+  console.log('getBreed func');
+  console.log(req.params);
+  const breedData = await Cat.fetchCatBreed()
+  console.log(breedData);
+  // res.render('breeds', {
+  //   breeds: breeds,
+  //   path: undefined
+  // })
 }
