@@ -2,9 +2,14 @@ const Cat = require('../models/cat')
 
 exports.getIndex = async function (req, res, next) {
   const [cat] = await Cat.fetchRandomCat()
-  console.log(cat);
+  if (!cat) res.redirect('/')
   res.render('index', {
     imgUrl: cat.url,
     path: undefined
   })
+}
+exports.getBreeds = async function (req, res, next) {
+  const breeds = await Cat.fetchCatBreeds()
+  breeds.length;
+  res.redirect('/')
 }
