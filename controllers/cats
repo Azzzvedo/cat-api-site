@@ -1,3 +1,7 @@
-exports.getIndex = () => {
 
+const Cat = require('../models/cat')
+
+exports.getIndex = (req, res, next) => {
+  Cat.fetchRandomCat()
+  res.render('index')
 }
