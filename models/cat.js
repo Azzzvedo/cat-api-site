@@ -12,6 +12,7 @@ module.exports = class Cat {
       console.error(error);
     }
   }
+
   static async fetchCatBreeds() {
     try {
       const response = await axios({
@@ -25,10 +26,11 @@ module.exports = class Cat {
       console.error(error);
     }
   }
+
   static async fetchCatBreed() {
     try {
       const response = await axios({
-        url: `v1/images/search?breed_ids=beng`,
+        url: `v1/breeds/search?q=beng`,
         method: 'get', // default
         baseURL: 'https://api.thecatapi.com',
         // headers: { "x-api-key": process.env.CAT_API_KEY }
@@ -38,6 +40,4 @@ module.exports = class Cat {
       console.error(error);
     }
   }
-
-
 }
