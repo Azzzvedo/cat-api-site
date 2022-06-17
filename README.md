@@ -2,7 +2,7 @@
 
 A site to test [The Cat API](https://thecatapi.com/).
 
-Built using [Node](https://nodejs.dev/) and [Express js](https://expressjs.com/) on the backend and normal HTML, CSS and JS on the frontend.
+Built using [Node](https://nodejs.dev/) and [Express js](https://expressjs.com/) on the backend and EJS, CSS and JS on the frontend.
 
 ## Random Cat Page
 
