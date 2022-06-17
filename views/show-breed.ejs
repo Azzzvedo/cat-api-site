@@ -1,19 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+<%- include('./includes/head.ejs') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cats</title>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
+  <body>
+    <%- include('./includes/navbar.ejs') %>
+      <div class="container">
+        <main>
+          <div class="info-card">
+            <% if (breedData) { %>
+              <h1 class="info-card__title">
+                <%= breedData.name %>
+              </h1>
+              <div><img src="<%= imageData.url %>" alt=""></div>
+              <div class="info-card__info">
+                <p>Temperament:
+                  <%= breedData.temperament %>
+                </p>
+                <p>Origin:
+                  <%= breedData.origin %>
+                </p>
+                <p>Description:
+                  <%= breedData.description %>
+                </p>
+                <p>Life Span:
+                  <%= breedData.life_span %>
+                </p>
+                <div>
+                  <% if (breedData.affection_level) { %>
+                    <p>Affection level:
+                      <%= "🤗 " .repeat(breedData.affection_level) %>
+                    </p>
+                    <% } %>
+                </div>%>
+                <div>
+                  <% if (breedData.child_friendly) { %>
+                    <p>Child friendly:
+                      <%= "👶 " .repeat(breedData.child_friendly) %>
+                    </p>
+                    <% } %>
+                </div>
+                <div>
+                  <% if (breedData.cat_friendly) { %>
+                    <p>Cat friendly:
+                      <%= "🐈 " .repeat(breedData.cat_friendly) %>
+                    </p>
+                    <% } %>
+                </div>
+                <div>
+                  <% if (breedData.dog_friendly) { %>
+                    <p>Dog friendly:
+                      <%= "🐕 " .repeat(breedData.dog_friendly) %>
+                    </p>
+                    <% } %>
+                </div>
+                <div>
+                  <% if (breedData.energy_level) { %>
+                    <p>Energy level:
+                      <%= "⚡️ " .repeat(breedData.energy_level) %>
+                    </p>
+                    <% } %>
+                </div>
+                <div>
+                  <% if (breedData.intelligence) { %>
+                    <p>Intelligence:
+                      <%= "🧐 " .repeat(breedData.intelligence) %>
+                    </p>
+                    <% } %>
+                </div>
+                <a class="btn" href="<%= breedData.vetstreet_url %>">
+                  VetStreet
+                </a>
+                <a class="btn" href="<%= breedData.vcahospitals_url %>">
+                  VCA Hospital
+                </a>
+              </div>
+              <% } else { %>
+                <div>
 
-<body>
-  <%- include('./includes/navbar.ejs') %>
-    <a href="/breeds">Breeds</a>
-    <a href="">Random</a>
-    <img src="<%=  %> " alt="cat">
-</body>
+                  <div class="random-cat__inner-container">
+                    <div class="random-cat__button-container">
+                      <h4>No info on this breed right meow! Try another!</h4>
+                    </div>
+                    <div class="random-cat__button-container"><a href="/breeds" class="btn">Back to breeds</a></div>
+                  </div>
+
+                </div>
+                <% } %>
+          </div>
+        </main>
+      </div>
+      <%- include('./includes/footer.ejs') %>
+  </body>
 
 </html>

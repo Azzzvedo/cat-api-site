@@ -18,12 +18,12 @@ exports.getBreeds = async function (req, res, next) {
 }
 
 exports.getBreed = async function (req, res, next) {
-  console.log('getBreed func');
-  console.log(req.params);
-  const breedData = await Cat.fetchCatBreed()
-  console.log(breedData);
-  // res.render('breeds', {
-  //   breeds: breeds,
-  //   path: undefined
-  // })
+  const breedId = req.params.breedId
+  const [breedData] = await Cat.fetchCatBreed(breedId)
+  const imageData = breedData ? await Cat.fetchImage(breedData.reference_image_id) : ''
+  res.render('show-breed', {
+    breedData: breedData,
+    imageData: imageData,
+    path: undefined
+  })
 }

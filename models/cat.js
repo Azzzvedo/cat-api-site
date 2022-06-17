@@ -5,7 +5,7 @@ module.exports = class Cat {
     try {
       const response = await axios.get('/v1/images/search', {
         baseURL: 'https://api.thecatapi.com',
-        // headers: { 'x\-api\-key': process.env.CAT_API_KEY }
+        // headers: { "x-api-key": process.env.CAT_API_KEY }
       })
       return response.data;
     } catch (error) {
@@ -18,8 +18,7 @@ module.exports = class Cat {
       const response = await axios({
         url: '/v1/breeds',
         method: 'get', // default
-        baseURL: 'https://api.thecatapi.com',
-        // headers: { "x-api-key": process.env.CAT_API_KEY }
+        baseURL: 'https://api.thecatapi.com'
       })
       return response.data;
     } catch (error) {
@@ -27,13 +26,25 @@ module.exports = class Cat {
     }
   }
 
-  static async fetchCatBreed() {
+  static async fetchCatBreed(id) {
     try {
       const response = await axios({
-        url: `v1/breeds/search?q=beng`,
+        url: `/v1/breeds/search?q=${id}`,
         method: 'get', // default
-        baseURL: 'https://api.thecatapi.com',
-        // headers: { "x-api-key": process.env.CAT_API_KEY }
+        baseURL: 'https://api.thecatapi.com'
+      })
+      return response.data
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  static async fetchImage(image_id) {
+    try {
+      const response = await axios({
+        url: `/v1/images/${image_id}`,
+        method: 'get', // default
+        baseURL: 'https://api.thecatapi.com'
       })
       return response.data;
     } catch (error) {

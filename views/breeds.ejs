@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+<%- include('./includes/head.ejs') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cats</title>
-  <script type="module" defer src=" /javascript/script.js"></script>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
-
-<body>
-  <%- include('./includes/navbar.ejs') %>
-    <main>
-      <div class="container">
-        <% if (breeds.length> 0) { %>
-          <div class="grid">
-            <% breeds.forEach((breed)=> { %>
-              <% if (!breed.image) return %>
-                <a href="/breeds/<%= breed.id %>" class="cat-card" style="background-image: linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.2)), url(<%= breed.image?.url ?? '' %>);background-size:cover;background-position:center">
-                  <div class="cat-card__info">
-                    <h1 class="cat-card__title">
-                      <%= breed.name %>
-                    </h1>
-                    <p class="cat-card__fav filter">😻</p>
-                  </div>
-                </a>
-                <% }) %>
+  <body>
+    <%- include('./includes/navbar.ejs') %>
+      <main>
+        <div class="container">
+          <div class="random-cat__inner-container">
+            <div class="random-cat__button-container">
+              <h2>Pick a cat 🐈‍⬛</h2>
+            </div>
           </div>
-          <% } else { %>
-            <h1>No Cat Breeds Found! 🐈</h1>
-            <% } %>
-      </div>
-    </main>
-</body>
+          <% if (breeds.length> 0) { %>
+            <div class="grid">
+              <% breeds.forEach((breed)=> { %>
+                <% if (!breed.image) return %>
+                  <a href="/breeds/<%= breed.id %>" class="cat-card" style="background-image: linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.2)), url(<%= breed.image?.url ?? '' %>);background-size:cover;background-position:center">
+                    <div class="cat-card__info">
+                      <h1 class="cat-card__title">
+                        <%= breed.name %>
+                      </h1>
+                      <p class="cat-card__fav filter">😻</p>
+                    </div>
+                  </a>
+                  <% }) %>
+            </div>
+            <% } else { %>
+              <h1>No Cat Breeds Found! 🐈</h1>
+              <% } %>
+        </div>
+      </main>
+      <%- include('./includes/footer.ejs') %>
+  </body>
 
 </html>
